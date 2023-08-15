@@ -1,0 +1,29 @@
+{% extends "./layout/layout.nj" %}
+
+{% block title %}
+    <title>{{systemInfo.name}} - {{currentMenu.title}}</title>
+{% endblock %}
+
+{% block content %}
+
+{% include  "./layout/sec-img.nj" %}
+
+    <section class="section-box case-box">
+        <div class="container">
+            <ul class="case-list">
+                {% for item in list %}
+                <li>
+                    <a href="/case-detail?id={{item.id}}">
+                        <div class="pos case-img">
+                            <img src="{{item.img}}"/>
+                        </div>
+                        <div class="case-tle cn">{{item.title}}</div>
+                        <div class="case-tle en">{{item.title_en}}</div>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+{% endblock %}

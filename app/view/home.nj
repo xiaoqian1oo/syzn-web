@@ -1,0 +1,192 @@
+{% extends "./layout/layout.nj" %}
+
+{# {% block title %}
+    <title>首页</title>
+{% endblock %} #}
+
+{% block content %}
+    <link rel="stylesheet" href="/public/css/fullpage.min.css"/>
+    <link rel="stylesheet" href="/public/css/index.css"/>
+    <script src="/public/js/fullpage.min.js"></script>
+
+    <div id="fullpage">
+        <div class="index-a section">
+            <div class="swiper banner-swiper">
+                <div class="swiper-wrapper">
+                    {% for item in data1.bgList %}
+                        <div class="swiper-slide">
+                            <img src="{{item.image_url}}" alt="">
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <img src="{{data1.other[0].image_url}}"
+                alt="" class="fixed-banner-img">
+            <div class="index-a-box">
+                {% for item in data1.link %}
+                    <a href="{{item.url}}" class="btn lt-btn cn">
+                        <i class="{{item.description}}"></i>{{item.title}}
+                    </a>
+                    <a href="{{item.url}}" class="btn lt-btn en">
+                        {# <i class="{{item.description}}"></i> #}
+                        {{item.title_en}}
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="index-b section" style="background: url({{data2.bgList[0].image_url}}) no-repeat center center / cover;">
+
+            <div class="container">
+                <div class="index-b-box">
+                    <div class="title cn">{{data2.bgList[0].title|safe}}</div>
+                    <div class="title en">{{data2.bgList[0].title_en|safe}}</div>
+                    <div class="text cn">{{data2.bgList[0].description|safe}}</div>
+                    <div class="text en">{{data2.bgList[0].description_en|safe}}</div>
+                    <div class="btn-box cn">
+                        {% for item in data2.link %}
+                            <a href="{{item.url}}"  class="btn rt-btn zx">{{item.title}}</a>
+                        {% endfor %}
+                    </div>
+                     <div class="btn-box en">
+                        {% for item in data2.link %}
+                            <a href="{{item.url}}"  class="btn rt-btn zx">{{item.title_en}}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="index-b index-c section"
+            style="background: url({{data3.bgList[0].image_url}}) no-repeat center center / cover;">
+            <div class="container">
+                <div class="index-b-box">
+                    <div class="title cn">{{data3.bgList[0].title}}</div>
+                    <div class="title en">{{data3.bgList[0].title_en}}</div>
+                    <div class="text cn" style="width:50%;margin:0 auto;">{{data3.bgList[0].description}}
+                    </div>
+                     <div class="text en" style="width:50%;margin:0 auto;">{{data3.bgList[0].description_en}}
+                    </div>
+                    <div class="arrow">
+                        <img src="/public/image/down-arrow.png" alt="">
+                    </div>
+                    <div class="video-swiper">
+                        <div class="btn prev-btn">
+                            <img src="/public/image/prev_jt_01.png" alt="">
+                        </div>
+                        <div class="btn next-btn">
+                            <img src="/public/image/next_jt_01.png" alt="">
+                        </div>
+                        <div class="swiper swp-video" >
+                            <div class="swiper-wrapper">
+                                {% for item in video %}
+                                    <div class="swiper-slide hoverbtn">
+                                        {# <iframe style="display:block;width:100%;height:100%;" frameborder="0"
+                                        src="{{item.video_url}}" referrerpolicy="unsafe-url"
+                                        allowfullscreen=""></iframe> #}
+                                        <a  class="pos" href="/video-detail?id={{item.id}}">
+                                            <img src="{{item.video_image_url}}" alt="">
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="index-b index-d section" style="background: url({{data4.bgList[0].image_url}}) no-repeat center center / cover;">
+            <div class="container">
+                <div class="index-b-box">
+                    <div class="title cn">{{data4.bgList[0].title}}</div>
+                    <div class="title en">{{data4.bgList[0].title_en}}</div>
+                    <div class="product-img">
+                        <img src="{{data4.other[0].image_url}}" alt="">
+                    </div>
+                    <div class="text cn">{{data4.bgList[0].description|safe}}</div>
+                    <div class="text en">{{data4.bgList[0].description_en|safe}}</div>
+                    <div class="btn-box cn">
+                        {% for item in goods %}
+                            <a href="/product-detail?id={{item.id}}" class="btn">{{item.title}}</a>
+                        {% endfor %}
+                    </div>
+                     <div class="btn-box en">
+                        {% for item in goods %}
+                            <a href="/product-detail?id={{item.id}}" class="btn">{{item.title_en}}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="index-b index-e section"
+            style="background: url({{data5.bgList[0].image_url}}) no-repeat center center / cover;">
+            <div class="container">
+                <div class="index-b-box">
+                    <div class="title cn">{{data5.bgList[0].title}}</div>
+                    <div class="title en">{{data5.bgList[0].title_en}}</div>
+                    <div class="te cn">{{data5.bgList[0].description|safe}}</div>
+                    <div class="te en">{{data5.bgList[0].description_en|safe}}</div>
+                    <div class="swp-cooper-box">
+                        <div class="swiper swp-cooper">
+                            <div class="swiper-wrapper">
+                                {% for item in cooper %}
+                                    <div class="swiper-slide">
+                                        <div class="pos">
+                                            <img src="{{item.url}}" alt="{{item.name}}">
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="control-box">
+                            <div class="btn cooper-prev">
+                                <img src="/public/image/prev_jt_01.png" alt="">
+                            </div>
+                            <div class="btn next_partnerswiper">
+                                <img src="/public/image/next_jt_01.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--#include file="/public/html/footer.html"-->
+
+        <div id="footer" class="section fp-auto-height">
+            {% include "./layout/footer.nj" %}
+        </div>
+    </div>
+
+    <script>
+        var swiper = new Swiper(".banner-swiper", {});
+        var swp_video = new Swiper(".swp-video", {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true
+            },
+            navigation: {
+                nextEl: ".video-swiper .next-btn",
+                prevEl: ".video-swiper .prev-btn"
+            }
+        });
+        var swp_cooper = new Swiper(".swp-cooper", {
+            slidesPerView: 4,
+            grid: {
+                rows: 3
+            },
+            spaceBetween: 30,
+            navigation: {
+                nextEl: ".cooper-prev",
+                prevEl: ".cooper-next"
+            }
+        });
+        new fullpage('#fullpage', {
+            //options here
+            autoScrolling: true,
+            scrollHorizontally: true,
+            navigation: true,
+            responsiveWidth: 1025, // 屏幕小于时，正常网站
+        });
+    </script>
+
+{% endblock %}

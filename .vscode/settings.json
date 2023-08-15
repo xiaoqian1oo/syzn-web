@@ -1,0 +1,19 @@
+{
+    "cSpell.words": [
+        "eggjs",
+        "fieldname",
+        "logrotator",
+        "syzn"
+    ],
+    // #每次保存的时候将代码按eslint格式进行修复
+    "eslint.validate": [
+        "javascript",
+        "html",
+        "vue"
+    ],
+    // "eslint.autoFixOnSave": true,   // 改成下面的"editor.codeActionsOnSave"
+    // #每次保存的时候将代码按eslint格式进行修复
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+}

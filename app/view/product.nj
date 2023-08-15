@@ -1,0 +1,83 @@
+{% extends "./layout/layout.nj" %} {% block title %}
+<title>{{systemInfo.name}} - {{currentMenu.title}}</title>
+<meta name="keywords" content="{{systemInfo.seo_keyword}}" />
+<meta name="description" content="{{systemInfo.seo_description}}" />
+{% endblock %} {% block content %} {% include "./layout/sec-img.nj" %}
+
+<section class="section-box news-box">
+  <div class="container">
+    <div class="conn-flex">
+      <div class="conn-left">
+        <div class="conn-slide">
+          <div class="tle">
+            <h3 class="cn">{{currentMenu.title}}</h3>
+            <p class="en">{{currentMenu.title_en}}</p>
+          </div>
+          <ul class="conn-slide-menu">
+            {% for item in classify.children %}
+            <li class="{{'on' if item.id==currentId}}">
+              <div class="a-tle cn">
+                <i class="icon"></i>
+                <a href="/product?id={{item.id}}"> {{item.title}} </a>
+              </div>
+              <div class="a-tle en">
+                <i class="icon"></i>
+                <a href="/product?id={{item.id}}"> {{item.title_en}} </a>
+              </div>
+              {% if item.children?.length>0 %} {% endif %}
+              <dl>
+                {% for sub in item.children %}
+                <dd class="">
+                  <a href="/product?id={{sub.id}}"> {{sub.title}} </a>
+                </dd>
+                {% endfor %}
+              </dl>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <script>
+          $(".conn-slide-menu>li .a-tle .icon").click(function (e) {
+            let parentLi = $(this).parents("li")
+            let dl = parentLi.children("dl")
+            if (dl[0]) {
+              parentLi.toggleClass("on")
+            }
+          })
+        </script>
+      </div>
+      <div class="conn-right">
+        <div class="con-title">
+          <span class="cn">产品展示</span>
+          <span class="en">Product display</span>
+          {# <i>News Information</i> #}
+        </div>
+        <div>
+          {# {{list |dump}} #}
+          {# {{list |dump}} #}
+          {# <br> #}
+          {# {{total |dump}} #}
+          {# <br> #}
+          {# {{page |dump}} #}
+          <ul class="goods-list">
+            {% for item in list %}
+            <li class="lis">
+              <a href="/product-detail?id={{item.id}}">
+                <div class="pos goods-img">
+                  <img src="{{item.image_url|showImgUrl}}" />
+                </div>
+                <div class="goods-tle">
+                  <span class="cn">{{item.title}}</span>
+                  <span class="en">{{item.title_en}}</span>
+                </div>
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

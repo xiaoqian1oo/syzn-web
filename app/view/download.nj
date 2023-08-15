@@ -1,0 +1,108 @@
+{% extends "./layout/layout.nj" %} {% block title %}
+<title>{{systemInfo.name}} - {{currentMenu.title}}</title>
+{% endblock %} {% block content %} {# {% include "./layout/sec-img.nj" %} #}
+
+<section class="section-box news-box">
+  <div class="container">
+    <div class="conn-flex">
+      <div class="conn-left">
+        <div class="pane-box">
+          <div class="pane-top">
+            <h3 class="tle cn">{{mostMenu.title}}</h3>
+            <p class="tle en">{{mostMenu.title_en}}</p>
+          </div>
+          <div class="pane-mid">
+            <ul class="pane-menu">
+              {% for item in mostMenu.children %}
+              <li class="on cn">
+                <a href="{{item.href}}?id={{item.id}}">{{item.title}}</a>
+              </li>
+              <li class="on en">
+                <a href="{{item.href}}?id={{item.id}}">{{item.title_en}}</a>
+              </li>
+              {% endfor %} {#
+              <li>
+                <a href="">资料下载</a>
+              </li>
+              #}
+            </ul>
+          </div>
+        </div>
+        <div class="pane-box">
+          <div class="pane-top">
+            <h3 class="tle cn">咨询客服</h3>
+            <p class="tle en">Advisory Service</p>
+          </div>
+          <div class="pane-mid">
+            <ul class="pane-menu pane-menu-item">
+              <li>
+                <a
+                  href="tencent://message/?uin={{systemInfo.qq}}&Site=&Menu-=yes"
+                >
+                  <img src="/public/image/qq.gif" alt="" />
+                  <div class="cn">客服</div>
+                  <div class="en">customer service</div>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:;">
+                  <img src="/public/image/oclock.png" alt="" />
+                  <div>
+                    <p class="cn">工作时间</p>
+                    <p class="en">working hours</p>
+                    <p>08:00 - 21:00</p>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:;">
+                  <img src="/public/image/wechart.png" alt="" />
+                  <div>
+                    <p class="cn">电话</p>
+                    <p class="en">phone</p>
+                    <p>tel: {{systemInfo.tel}}</p>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="conn-right">
+        <div class="con-title">
+          <span class="cn">{{nowMenu.title}}</span>
+          <span class="en">{{nowMenu.title_en}}</span>
+        </div>
+        <div>
+          <ul class="news-list download-list">
+            {% for item in list %}
+            <li>
+              <a style="color: #1e50ae">
+                <div class="news-text">
+                  {# 技术支持->资料下载 #}
+                  <h3 class="news-title">{{item.name}}</h3>
+                  {#
+                  <h3 class="news-title en">{{item.name_en}}</h3>
+                  #}
+                </div>
+                <div class="news-time cn">
+                  <object>
+                    <a href="{{item.url}}" download>立即下载</a>
+                  </object>
+                </div>
+                <div class="news-time en">
+                  <object>
+                    <a href="{{item.url}}" download>Download Now</a>
+                  </object>
+                </div>
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

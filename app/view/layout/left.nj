@@ -1,0 +1,37 @@
+<div class="conn-slide">
+    <div class="tle">
+        <h3 class="cn">产品展示</h3>
+        <p class="en">Product classification</p>
+    </div>
+    <ul class="conn-slide-menu">
+        <li class="on">
+            <div class="a-tle">
+                <i class="icon"></i>
+                <a href="/product_video?s=66&amp;type=0">
+
+                    <span>Z系列（自动行走坡口机）</span>
+                </a>
+            </div>
+            <dl>
+                <dd class="level_3_li ">
+                    <a block="" href="/product_video?s=66&amp;p=17&amp;type=0&amp;index=0">NRD-Z2自动行走坡口机</a>
+                </dd>
+                <dd class="level_3_li ">
+                    <a block="" href="/product_video?s=66&amp;p=18&amp;type=0&amp;index=1">NRD-Z3自动行走坡口机</a>
+                </dd>
+                <dd class="level_3_li ">
+                    <a block="" href="/product_video?s=66&amp;p=19&amp;type=0&amp;index=2">NRD-Z4自动行走坡口机</a>
+                </dd>
+            </dl>
+        </li>
+    </ul>
+</div>
+<script>
+    $(".conn-slide-menu>li .a-tle .icon").click(function (e) {
+        let parentLi = $(this).parents("li")
+        let dl = parentLi.children("dl")
+        if (dl[0]) {
+            parentLi.toggleClass("on")
+        }
+    })
+</script>

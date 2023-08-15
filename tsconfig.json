@@ -1,0 +1,11 @@
+{
+  "extends": "@eggjs/tsconfig",
+  "compilerOptions": {
+    "declaration": false
+  },
+  "exclude": [
+    "app/public",
+    "app/views",
+    "database"
+  ]
+}

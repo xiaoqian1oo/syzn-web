@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        {# <meta name="viewport" content="width=device-width, initial-scale=1.0"> #}
+        {% block title %}
+            <title>{{systemInfo.name}}</title>
+            <meta name="keywords" content="{{systemInfo.seo_keyword}}">
+            <meta name="description" content="{{systemInfo.seo_description}}">
+        {% endblock %}
+        <link rel="icon" href="/public/favicon.png" type="image/x-icon">
+        <link rel="stylesheet" href="/public/css/swiper-bundle.min.css">
+
+        <link rel="stylesheet" href="/public/css/animate.css">
+        <link rel="stylesheet" href="/public/css/iconfont.css">
+
+        <script src="/public/js/jquery-1.11.3.min.js"></script>
+        <script src="/public/js/swiper-bundle.min.js"></script>
+        <script src="/public/js/wow.min.js"></script>
+        <script src="/public/js/utils.js"></script>
+    </head>
+
+    <body class="main-box">
+        <!--头部-->
+        {% include "./header.nj" %}
+        <!--头部 end-->
+        {# 内容区域 #}
+        {% block content %}{% endblock %}
+        {# 底部 #}
+        {% if currentMenu.href !== "/" %}
+            {% include "./footer.nj" %}
+        {% endif %}
+
+        <div class="go-top">
+            <div class="go-top-item scroll-top">
+                <i class="iconfont icon-shangyi"></i>
+            </div>
+        </div>
+        <script>
+        $('.go-top').on('click', '.scroll-top', function () {
+            if (location.pathname != '/') {
+                $('html, body').animate({
+                    scrollTop: 0
+                }, 300);
+            } else {
+                $('#fullpage').css("transform", "translate3d(0px, 0px, 0px)")
+                $('#fullpage .section')
+                    .eq(0)
+                    .addClass('active fp-completely')
+                    .siblings()
+                    .removeClass('active fp-completely')
+                $('#fp-nav ul li')
+                    .eq(0)
+                    .find('a')
+                    .addClass('active')
+                    .parent()
+                    .siblings()
+                    .find('a')
+                    .removeClass('active')
+            }
+        })
+
+        </script>
+
+        {% block script %}{% endblock %}
+
+    </body>
+
+</html>

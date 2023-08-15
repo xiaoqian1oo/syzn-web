@@ -1,0 +1,15 @@
+{% extends "./layout/layout.nj" %}
+
+{% block title %}
+    <title>{{systemInfo.name}} - {{currentMenu.title}}</title>
+{% endblock %}
+
+{% block content %}
+
+    <section class="section-box">
+        <div class="container">
+            <img src="{{systemInfo.honor}}" alt="" style="width:100%;box-shadow: 0 0 10px 2px rgba(0,0,0,.1);">
+        </div>
+    </section>
+
+{% endblock %}

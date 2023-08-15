@@ -1,0 +1,358 @@
+{% extends "./layout/layout.nj" %} {% block title %}
+<title>{{systemInfo.name}} - {{currentMenu.title}}</title>
+{% endblock %} {% block content %}
+<style>
+  .lx-box .box {
+    width: 25%;
+    float: left;
+    text-align: center;
+  }
+
+  .lx-box .box .icon {
+    width: 120px;
+    height: 120px;
+    position: relative;
+    margin: 0 auto 20px;
+    overflow: hidden;
+    border: solid 1px #dddddd;
+  }
+
+  .lx-box .box .icon .icon-group {
+    width: 100%;
+    -webkit-transition: all ease 0.3s;
+    -o-transition: all ease 0.3s;
+    -moz-transition: all ease 0.3s;
+    transition: all ease 0.3s;
+    position: relative;
+    z-index: 10;
+  }
+
+  .lx-box .box .icon .icon-group img {
+    display: block;
+    width: 100%;
+  }
+  .lx-box .box .icon .icon-group img.fil {
+    filter: brightness(100);
+  }
+
+  .lx-box .box .icon::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    -webkit-transition: all ease 0.3s;
+    -o-transition: all ease 0.3s;
+    -moz-transition: all ease 0.3s;
+    transition: all ease 0.3s;
+  }
+
+  .lx-box .box .icon::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: -100%;
+    background: #1e76cf;
+    -webkit-transition: all ease 0.3s;
+    -o-transition: all ease 0.3s;
+    -moz-transition: all ease 0.3s;
+    transition: all ease 0.3s;
+  }
+
+  .lx-box .box .text-box .tl {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 14px;
+  }
+
+  .lx-box .box .text-box .te {
+    color: #999999;
+    font-size: 14px;
+  }
+
+  .lx-box .box:hover .icon::after {
+    top: 0;
+  }
+
+  .lx-box .box:hover .icon .icon-group {
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
+  .lx-box .box:nth-child(3) .icon::after {
+    display: none;
+  }
+
+  .serviceMap_a {
+    background-color: #f8f8f8;
+  }
+
+  .serviceMap_b {
+    background-color: #fff;
+  }
+
+  @media (max-width: 1366px) {
+    .lx-box .box .text-box .tl {
+      font-size: 16px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .lx-box .box {
+      width: 100%;
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -moz-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      margin-bottom: 20px;
+      -webkit-box-pack: justify;
+      -webkit-justify-content: space-between;
+      -moz-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+    }
+
+    .lx-box .box .icon {
+      width: 80px;
+      height: 80px;
+      margin: 0;
+    }
+
+    .lx-box .box .text-box {
+      width: -webkit-calc(100% - 90px);
+      width: -moz-calc(100% - 90px);
+      width: calc(100% - 90px);
+      text-align: left;
+    }
+
+    .lx-box .box:last-child {
+      margin-bottom: 0;
+    }
+
+    #map {
+      height: 300px;
+    }
+  }
+</style>
+
+{% include "./layout/sec-img.nj" %}
+
+<section class="section-box contact-box">
+  <div class="container">
+    <h3 class="title cn">您可以通过以下方式联系到我们</h3>
+    <h3 class="title en">You can contact us through the following methods</h3>
+    <div class="desc cn">
+      如果您对我公司及我们的产品感兴趣，欢迎到我公司或者我公司当地办事处来勘察，您也可以通过在线咨询，需求表单提交，发送电子邮件，拨打咨询电话等方式与我们取得沟通!
+    </div>
+    <div class="desc en">
+      If you are interested in our company and our products, please come to our
+      company or our local office for investigation. You can also communicate
+      with us through online consultation, request form submission, email, call
+      the consultation phone, and other methods!
+    </div>
+    <div class="lx-box clearfix">
+      <div class="box wow">
+        <div class="icon">
+          <div class="icon-group">
+            <img src="/public/image/tel.png" alt="" />
+            <img class="fil" src="/public/image/tel.png" alt="" />
+          </div>
+        </div>
+        <div class="text-box">
+          <div class="tl cn">服务热线</div>
+          <div class="tl en">Service hotline</div>
+          <div class="te">{{systemInfo.tel}}</div>
+        </div>
+      </div>
+      <div class="box wow">
+        <div class="icon">
+          <div class="icon-group">
+            <img src="/public/image/address.png" alt="" />
+            <img class="fil" src="/public/image/address.png" alt="" />
+          </div>
+        </div>
+        <div class="text-box cn">
+          <div class="tl">公司地址</div>
+          <div class="te">地址：{{systemInfo.address}}</div>
+        </div>
+         <div class="text-box en">
+          <div class="tl">Company Address</div>
+          <div class="te">address:{{systemInfo.address_en}}</div>
+        </div>
+      </div>
+      <div class="box wow">
+        <div class="icon">
+          <img src="{{systemInfo.wx_code}}" alt="" />
+        </div>
+        <div class="text-box">
+          <div class="tl cn">官方微信</div>
+          <div class="tl en">Official WeChat</div>
+          <div class="te cn">微信服务平台</div>
+          <div class="te en">WeChat service platform</div>
+        </div>
+      </div>
+      <div class="box wow">
+        <div class="icon">
+          <div class="icon-group">
+            <img src="/public/image/email2.png" alt="" />
+            <img class="fil" src="/public/image/email2.png" alt="" />
+          </div>
+        </div>
+        <div class="text-box">
+          <div class="tl cn">邮箱</div>
+          <div class="tl en">mailbox</div>
+          <div class="te">{{systemInfo.email}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="map"></div>
+
+<script
+  type="text/javascript"
+  src="//api.map.baidu.com/api?type=webgl&amp;v=1.0&amp;ak=6N5uzvGbqsPuRI6L0K4lZkFxD6VfsoX2"
+></script>
+<script
+  type="text/javascript"
+  src="http://api.map.baidu.com/getscript?type=webgl&v=3.0&ak=6N5uzvGbqsPuRI6L0K4lZkFxD6VfsoX2&services=&t=20230105101157"
+></script>
+<script type="text/javascript">
+  //标注点数组
+  var markerArr = [
+    {
+      title: "{{systemInfo.name}}",
+      content: "{{systemInfo.address}}",
+      // point: map_y + "|" + map_x,
+      point: "",
+      isOpen: 0,
+      icon: {
+        w: 23,
+        h: 25,
+        l: 22,
+        t: 21,
+        x: 9,
+        lb: 12,
+      },
+    },
+  ]
+
+  function initMap() {
+    var map = new BMapGL.Map("map")
+    // map.centerAndZoom(new BMapGL.Point(116.331398, 39.897445), 12);
+
+    //创建地址解析器实例
+    var myGeo = new BMapGL.Geocoder()
+    // 将地址解析结果显示在地图上，并调整地图视野
+    myGeo.getPoint(
+      markerArr[0].content,
+      function (point) {
+        if (point) {
+          map.centerAndZoom(point, 16)
+          map.addOverlay(
+            new BMapGL.Marker(point, { title: markerArr[0].content })
+          )
+          markerArr[0].point = point.lng + "|" + point.lat
+          window.map = map //将map变量存储在全局
+
+          setMapEvent() //设置地图事件
+          // addMapControl();//向地图添加控件
+          addMarker() //向地图中添加marker
+        } else {
+          alert("您选择的地址没有解析到结果！")
+        }
+      },
+      "北京市"
+    )
+  }
+
+  //地图事件设置函数：
+  function setMapEvent() {
+    map.enableDragging() //启用地图拖拽事件，默认启用(可不写)
+    map.enableScrollWheelZoom() //启用地图滚轮放大缩小
+    map.enableDoubleClickZoom() //启用鼠标双击放大，默认启用(可不写)
+    map.enableKeyboard() //启用键盘上下左右键移动地图
+  }
+
+  //创建marker
+  function addMarker() {
+    for (var i = 0; i < markerArr.length; i++) {
+      var json = markerArr[i]
+      var p0 = json.point.split("|")[0]
+      var p1 = json.point.split("|")[1]
+      var point = new BMapGL.Point(p0, p1)
+      var iconImg = createIcon(json.icon)
+      var marker = new BMapGL.Marker(point, { icon: iconImg })
+      var iw = createInfoWindow(i)
+      var label = new BMapGL.Label(json.title, {
+        offset: new BMapGL.Size(json.icon.lb - json.icon.x + 10, -20),
+      })
+      marker.setLabel(label)
+      map.addOverlay(marker)
+      label.setStyle({
+        borderColor: "#808080",
+        color: "#333",
+        cursor: "pointer",
+      })
+      ;(function () {
+        var index = i
+        var _iw = createInfoWindow(i)
+        var _marker = marker
+        _marker.addEventListener("click", function () {
+          this.openInfoWindow(_iw)
+        })
+        _iw.addEventListener("open", function () {
+          _marker.getLabel().hide()
+        })
+        _iw.addEventListener("close", function () {
+          _marker.getLabel().show()
+        })
+        label.addEventListener("click", function () {
+          _marker.openInfoWindow(_iw)
+        })
+        if (!!json.isOpen) {
+          label.hide()
+          _marker.openInfoWindow(_iw)
+        }
+      })()
+    }
+  }
+  //创建InfoWindow
+  function createInfoWindow(i) {
+    var json = markerArr[i]
+    var iw = new BMapGL.InfoWindow(json.content, {
+      title: json.title,
+      width: 270, // 信息窗口宽度
+    })
+    return iw
+  }
+  //创建一个Icon
+  function createIcon(json) {
+    var icon = new BMapGL.Icon(
+      "/public/image/us_mk_icon.png",
+      new BMapGL.Size(json.w, json.h),
+      {
+        imageOffset: new BMapGL.Size(-json.l, -json.t),
+        infoWindowOffset: new BMapGL.Size(json.lb + 5, 1),
+        offset: new BMapGL.Size(json.x, json.h),
+      }
+    )
+    return icon
+  }
+
+  initMap()
+</script>
+
+{% endblock %}

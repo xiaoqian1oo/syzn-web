@@ -1,0 +1,143 @@
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-nav">
+      {% for item in menu %}
+      <a class="cn" href="{{item.href}}">{{item.title}}</a>
+      <a class="en" href="{{item.href}}">{{item.title_en}}</a>
+      {% endfor %}
+    </div>
+    <div class="footer-cont">
+      <a href="javascript:;" class="footer-logo">
+        <img src="{{systemInfo.logo}}" alt="" />
+      </a>
+      <ul class="company-info">
+        <li class="cn">
+          <i class="iconfont icon-dashaxiaoqudizhi01"></i
+          >公司：{{systemInfo.name}}
+        </li>
+        <li class="en">
+          <i class="iconfont icon-dashaxiaoqudizhi01"></i
+          >company:{{systemInfo.name_en}}
+        </li>
+        <li class="cn">
+          <i class="iconfont icon-dianhua"></i>电话：{{systemInfo.tel}}
+        </li>
+        <li class="en">
+          <i class="iconfont icon-dianhua"></i>phone:{{systemInfo.tel}}
+        </li>
+        <li class="cn">
+          <i class="iconfont icon-youjian"></i>邮箱：{{systemInfo.email}}
+        </li>
+        <li class="en">
+          <i class="iconfont icon-youjian"></i>mailbox:{{systemInfo.email}}
+        </li>
+        <li class="cn">
+          <i class="iconfont icon-dianhua"></i
+          >售前电话：{{systemInfo.service_pre_sales_technical_team_tel}}
+        </li>
+        <li class="en">
+          <i class="iconfont icon-dianhua"></i
+          >Pre sales phone number:{{systemInfo.service_pre_sales_technical_team_tel}}
+        </li>
+        <li class="cn">
+          <i class="iconfont icon-dianhua"></i
+          >售后电话：{{systemInfo.service_after_sales_technical_team_tel}}
+        </li>
+        <li class="en">
+          <i class="iconfont icon-dianhua"></i
+          >After sales phone number:{{systemInfo.service_after_sales_technical_team_tel}}
+        </li>
+        <li class="cn">
+          <i class="iconfont icon-xiazai20"></i>地址：{{systemInfo.address}}
+        </li>
+        <li class="en">
+          <i class="iconfont icon-xiazai20"></i
+          >address:{{systemInfo.address_en}}
+        </li>
+      </ul>
+      <div class="code-img">
+        <div class="share-icon clearfix">
+          <a href="javascript:;" class="hover-share">
+            <img src="/public/image/weixin.png" alt="" class="icon-img" />
+            <div class="wx-img hover-hidden">
+              <div id="wxImg" class="wx-code"></div>
+              <p class="share-text cn">扫一扫即可分享到朋友圈</p>
+              <p class="share-text en">Scan and share on your Moments</p>
+            </div>
+          </a>
+          <a href="javascript:;" class="hover-share">
+            <img src="/public/image/qq.png" alt="" class="icon-img" />
+            <div class="wx-img hover-hidden">
+              <div class="wx-code">
+                <img
+                  src="/public/image/0uTFTiLT.jpg"
+                  alt=""
+                  style="width: 100%; height: 100%; display: block"
+                />
+              </div>
+              <p class="share-text cn">扫一扫加我企业QQ</p>
+              <p class="share-text en">Scan and add our company's QQ</p>
+            </div>
+          </a>
+          <a href="javascript:;" class="hover-share">
+            <img src="/public/image/email.png" alt="" class="icon-img" />
+            <div class="hover-hidden email-text">
+              Email: {{systemInfo.email}}
+            </div>
+          </a>
+          <a href="javascript:;" class="share-link">
+            <img src="/public/image/link.png" alt="" class="icon-img" />
+          </a>
+        </div>
+
+        <div class="code-flex">
+          <a href="#" class="shop-img">
+            <img src="{{systemInfo.shop_code}}" alt="" />
+            <p class="cn">官方商城</p>
+            <p class="en">Official Mall</p>
+          </a>
+          <a href="#" class="shop-img">
+            <img src="{{systemInfo.wx_code}}" alt="" />
+            <p class="cn">微信扫一扫</p>
+            <p class="en">Scan WeChat</p>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bot">
+    <div class="container">
+      <span>版权所有 &copy; {{systemInfo.name}} </span>
+      <a href="javascript:;" rel="noopener noreferrer">{{systemInfo.record}}</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/public/js/qrcode.min.js"></script>
+<script>
+  setTimeout(() => {
+    // 分享
+    var qrcode = new QRCode(document.getElementById("wxImg"), {
+      text: location.href,
+      width: 256,
+      height: 256,
+      colorDark: "#000000",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.H,
+    })
+  }, 1000)
+
+  $(".share-link").on("click", function () {
+    copy(location.href)
+  })
+
+  function copy(value) {
+    const input = document.createElement("input") // js创建一个input输入框
+    input.value = value // 将需要复制的文本赋值到创建的input输入框中
+    document.body.appendChild(input) // 将输入框暂时创建到实例里面
+    input.select() // 选中输入框中的内容
+    document.execCommand("Copy") // 执行复制操作
+    document.body.removeChild(input) // 最后删除实例中临时创建的input输入框，完成复制操作
+    jmMess.msg("复制成功")
+  }
+</script>

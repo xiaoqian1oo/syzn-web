@@ -1,0 +1,27 @@
+{% extends "./layout/layout.nj" %} {% block title %}
+<title>{{systemInfo.name}} - {{currentMenu.title}}</title>
+{% endblock %} {% block content %}
+<section class="section-box case-detail">
+  <div class="container">
+    <div class="case-detail-box cn">
+      <div class="top">
+        <h3 class="tle">{{data.title}}</h3>
+        <div class="info">
+          <span>{{data.updated_at|showToDate}}</span>
+        </div>
+      </div>
+      <div class="cont">{{data.content|safe}}</div>
+    </div>
+    <div class="case-detail-box en">
+      <div class="top">
+        <h3 class="tle">{{data.title_en}}</h3>
+        <div class="info">
+          <span>{{data.updated_at|showToDate}}</span>
+        </div>
+      </div>
+      <div class="cont">{{data.content_en|safe}}</div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

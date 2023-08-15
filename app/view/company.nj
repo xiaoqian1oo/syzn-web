@@ -1,0 +1,104 @@
+{% extends "./layout/layout.nj" %} {% block title %}
+<title>{{systemInfo.name}} - {{currentMenu.title}}</title>
+{% endblock %} {% block content %} {% include "./layout/sec-img.nj" %}
+<div id="navbar-box">
+  <div class="inbox cn">
+    {% for item in mostMenu.children %}
+    <a
+      href="{{item.href}}?id={{item.id}}"
+      class="{{ 'cur' if currentId==item.id }}"
+      >{{item.title}}</a
+    >
+    {% endfor %}
+  </div>
+  <div class="inbox en">
+    {% for item in mostMenu.children %}
+    <a
+      href="{{item.href}}?id={{item.id}}"
+      class="{{ 'cur' if currentId==item.id }}"
+      >{{item.title_en}}</a
+    >
+    {% endfor %}
+  </div>
+</div>
+
+<section class="section-box about-box">
+  <div class="container">
+    <div class="about-a">
+      <div class="about-a-tle">
+        <div class="cn">公司简介</div>
+        <div class="en">Company Profile</div>
+      </div>
+      <div class="content cn">{{systemInfo.profile}}</div>
+      <div class="content en">{{systemInfo.profile_en}}</div>
+    </div>
+  </div>
+  <div class="about-b">
+    <div class="container">
+      <div class="about-b-box">
+        <div class="lt-box">
+          <div class="tl cn">{{systemInfo.worth}}</div>
+          <div class="tl en">{{systemInfo.worth_en}}</div>
+          <div class="te cn">{{systemInfo.name}}</div>
+          <div class="te en">{{systemInfo.name_en}}</div>
+        </div>
+        <div class="rt-box">
+          <div class="box">
+            <div class="tp">
+              <span class="counter big">3</span>
+              <span class="big">+</span>
+            </div>
+            <div class="bm cn">成立</div>
+            <div class="bm en">establish</div>
+          </div>
+          <div class="box">
+            <div class="tp cn">
+              <span class="counter big">30</span>
+              <span class="big">+</span>省市自治区
+            </div>
+            <div class="tp en">
+              <span class="counter big">30</span>
+              <span class="big">+</span>
+            </div>
+            <div class="bm cn">的产品和服务覆盖</div>
+            <div class="bm en">
+              Product and service coverage of provinces, cities, and autonomous
+              regions
+            </div>
+          </div>
+          <div class="box">
+            <div class="tp">
+              <span class="counter big">20</span>
+              <span class="big">+</span>
+            </div>
+            <div class="bm cn">办事处多年行业经验技术团队</div>
+            <div class="bm en">
+              The technical team with years of industry experience in the office
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="about-c">
+    <div class="container">
+      <div class="about-c-box">
+        <div class="about-a-tle">
+          <div class="cn">企业文化</div>
+          <div class="en">Corporate Culture</div>
+        </div>
+        <div class="img-text clearfix">
+          <div class="im">
+            <div class="pos">
+              <img src="/public/image/1.jpg" alt="" />
+            </div>
+          </div>
+          <div class="te cn">{{systemInfo.corporate_culture}}</div>
+          <div class="te en">{{systemInfo.corporate_culture_en}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

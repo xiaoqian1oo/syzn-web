@@ -1,0 +1,14 @@
+    <section class="sec-image">
+        
+        {% if mostMenu.img %}
+<img src="{{mostMenu.img}}" alt="" />
+        {% else %}
+           <img src="/public/image/5PhceUSx.jpg" alt=""> 
+        {% endif %}
+
+        <div class="txt-box">
+            <h3 class="tle wow cn">{{mostMenu.title}}</h3>
+            <h3 class="tle wow en">{{mostMenu.title_en}}</h3>
+            <div class="info wow"></div>
+        </div>
+    </section>

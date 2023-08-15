@@ -1,0 +1,50 @@
+{% extends "./layout/layout.nj" %}
+
+{# {% block title %}
+    <title>{{systemInfo.name}} - {{currentMenu.title}}</title>
+
+{% endblock %} #}
+
+{% block content %}
+
+    <section class="section-box case-detail">
+        <div class="container">
+            <div class="case-detail-box">
+                <div class="top">
+                    {# 产品视频->视频展示标题 #}
+                    <h3 class="tle cn">{{data.title}}
+                    <h3 class="tle en">{{data.title_en}}
+                    </h3>
+                    <div class="info">
+                        <span>{{data.updated_at|showToDate}}</span>
+                    </div>
+                </div>
+                <div class="cont">
+                    {# ?utm_source=iframe_share #}
+                    <div class="pos">
+                        {# <iframe width="720" height="405" frameborder="0" src="https://www.ixigua.com/iframe/7200697962266100280?autoplay=0" referrerpolicy="unsafe-url" allowfullscreen></iframe> #}
+                    <iframe frameborder="0" src="{{data.video_url}}" referrerpolicy="unsafe-url" allowfullscreen=""></iframe>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <script>
+        function initVideo(){
+            $.ajax({
+                type:'get',
+                url:'https://www.ixigua.com/api/public/get_iframe_info?url={{data.video_url}}',
+                success:function(res){
+                    console.log(res)
+                }
+            })
+        }
+
+        $(function(){
+            // initVideo();
+        })
+
+    </script>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+logs/
+npm-debug.log
+node_modules/
+coverage/
+.idea/
+run/
+logs/
+.DS_Store
+# .vscode
+*.swp
+*.lock
+*.js
+
+# 不排除database和public下的js文件
+!app/public/**/*.js   
+!database/**/*.js   
+
+test/**/*.js
+config/**/*.js
+app/**/*.map
+test/**/*.map
+config/**/*.map

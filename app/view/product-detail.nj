@@ -1,0 +1,257 @@
+{% extends "./layout/layout.nj" %} {% block title %}
+<title>{{data.title or systemInfo.name}}</title>
+<meta
+  name="keywords"
+  content="{{data.seo_keyword or systemInfo.seo_keyword}}"
+/>
+<meta
+  name="description"
+  content="{{data.seo_description or systemInfo.seo_description}}"
+/>
+{% endblock %} {% block content %}
+
+<section class="section-box goods-detail">
+  <div class="container">
+    <div class="goods-top">
+      <div class="lt">
+        <div class="swiper swiper-no-swiping swiper-big">
+          <div class="swiper-wrapper">
+            {% for item in data.image_url | strToArray %}
+            <div class="swiper-slide">
+              <img src="{{item}}" />
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="swiper-btn">
+          <div class="bt swiper-btn-prev"></div>
+          <div thumbsSlider="" class="swiper swiper-sm">
+            <div class="swiper-wrapper">
+              {% for item in data.image_url | strToArray %}
+              <div class="swiper-slide">
+                <img src="{{item}}" />
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="bt swiper-btn-next"></div>
+        </div>
+      </div>
+
+      <div class="rt">
+        <h3 class="tle cn">{{data.title}}</h3>
+        <h3 class="tle en">{{data.title_en}}</h3>
+        <div class="desc cn">{{data.description}}</div>
+        <div class="desc en">{{data.description_en}}</div>
+        <div class="bot cn">
+          <a
+            href="tencent://message/?uin={{systemInfo.qq}}&amp;Site=在线QQ&amp;Menu=yes"
+            rel="noopener noreferrer"
+            class="btn getPrice"
+            >获取产品报价</a
+          >
+          <a href="tel:{{systemInfo.tel}}" class="btn makePhone hoverbtn">
+            电话&nbsp;<span class="te">{{systemInfo.tel}}</span>
+            <img src="/public/image/phone_03.png" class="nor" />
+          </a>
+          <a
+            href="{{download_url}}"
+            class="btn down hoverbtn"
+            rel="noopener noreferrer"
+          >
+            <span>资料下载</span>
+            <img src="/public/image/download.png" class="nor" />
+          </a>
+        </div>
+        <div class="bot en">
+          <a
+            href="tencent://message/?uin={{systemInfo.qq}}&amp;Site=在线QQ&amp;Menu=yes"
+            rel="noopener noreferrer"
+            class="btn getPrice"
+            >Obtain product quotes</a
+          >
+          <a href="tel:{{systemInfo.tel}}" class="btn makePhone hoverbtn">
+            phone&nbsp;<span class="te">{{systemInfo.tel}}</span>
+            <img src="/public/image/phone_03.png" class="nor" />
+          </a>
+          <a
+            href="{{download_url}}"
+            class="btn down hoverbtn"
+            rel="noopener noreferrer"
+          >
+            <span>Data download</span>
+            <img src="/public/image/download.png" class="nor" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="out-box">
+    <div class="mao-box">
+      <div class="container">
+        <div class="mao-flex cn">
+          <a href="#a2" class="act">产品详情</a>
+          <a href="#a5">售后承诺</a>
+          <a href="#a3">相关产品</a>
+        </div>
+        <div class="mao-flex en">
+          <a href="#a2" class="act">product details</a>
+          <a href="#a5">After sales commitment</a>
+          <a href="#a3">Related products</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pro-detail-box">
+    <div class="pro-info-li">
+      <a href="" class="maodian" id="a2"></a>
+      <div class="ls-tle cn">产品详情</div>
+      <div class="ls-tle en">product details</div>
+      <div class="container cn" style="min-height: 300px">
+        {{data.content|safe}}
+      </div>
+      <div class="container en" style="min-height: 300px">
+        {{data.content_en|safe}}
+      </div>
+    </div>
+    <div class="pro-info-li">
+      <a href="" class="maodian" id="a5"></a>
+      <div class="ls-tle cn">售后承诺</div>
+      <div class="ls-tle en">After sales commitment</div>
+      <div class="container">
+        <ul class="service-ul">
+          <li class="clearfix">
+            <div class="icon">
+              <img src="/public/image/lx-1.png" alt="" />
+            </div>
+            <div class="text-box cn">
+              <div class="tl">免费指导安装，保修1年</div>
+              <div class="te">
+                凡在本公司采购的产品，一律免费指导安装与产品培训；免费保修期为1年。
+              </div>
+            </div>
+            <div class="text-box en">
+              <div class="tl">Free installation guidance, 1-year warranty</div>
+              <div class="te">
+                All products purchased from our company will receive free
+                installation guidance and product training; The free warranty
+                period is 1 year.
+              </div>
+            </div>
+          </li>
+          <li class="clearfix">
+            <div class="icon">
+              <img src="/public/image/lx-2.png" alt="" />
+            </div>
+            <div class="text-box cn">
+              <div class="tl">预约上门服务</div>
+              <div class="te">
+                问题报修后，先进行电话等线上方式指导，无法解决问题的，可预约技术人员到现场进行解决。
+              </div>
+            </div>
+            <div class="text-box en">
+              <div class="tl">Appointment for on-site service</div>
+              <div class="te">
+                After the problem is reported for repair, online guidance such
+                as telephone can be provided first. If the problem cannot be
+                solved, technical personnel can be appointed to the site for
+                resolution.
+              </div>
+            </div>
+          </li>
+          <li class="clearfix">
+            <div class="icon">
+              <img src="/public/image/lx-3.png" alt="" />
+            </div>
+            <div class="text-box cn">
+              <div class="tl">零保修费</div>
+              <div class="te">
+                由于机器自身缺陷造成的损坏，安全免费保修。人为问题造成的损坏，仅收取零部件成本。
+              </div>
+            </div>
+            <div class="text-box en">
+              <div class="tl">Zero warranty fee</div>
+              <div class="te">
+                The damage caused by the machine's own defects is covered by a
+                free safety warranty. Damage caused by human factors will only
+                be charged for component costs.
+              </div>
+            </div>
+          </li>
+          <li class="clearfix">
+            <div class="icon">
+              <img src="/public/image/lx-4.png" alt="" />
+            </div>
+            <div class="text-box cn">
+              <div class="tl">零部件成本价替换</div>
+              <div class="te">
+                保修期过后，本公司继续提供维修服务，零部件一律按成本价替换。
+              </div>
+            </div>
+            <div class="text-box en">
+              <div class="tl">Component cost price replacement</div>
+              <div class="te">
+                After the warranty period, our company will continue to provide repair services, and all parts will be replaced at cost price.
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="pro-info-li">
+      <a href="" class="maodian" id="a3"></a>
+      <div class="ls-tle cn">相关产品</div>
+      <div class="ls-tle en">Related products</div>
+      <div class="container">
+        <div class="swiper case-ul goods-list" id="case">
+          <div class="swiper-wrapper">
+            {% for item in relevanceList %}
+            <div class="swiper-slide lis">
+              <a href="/product-detail?id={{item.id}}">
+                <div class="pos goods-img">
+                  <img src="{{item.image_url|showImgUrl}}" />
+                </div>
+                <div class="goods-tle cn">{{item.title}}</div>
+                <div class="goods-tle en">{{item.title_en}}</div>
+              </a>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="swiper-pag">
+          <div class="swiper-pagination" id="caseSP"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  var swiper_sm = new Swiper(".swiper-sm", {
+    spaceBetween: 10,
+    slidesPerView: 5,
+    freeMode: true,
+    watchSlidesProgress: true,
+    navigation: {
+      nextEl: ".swiper-btn-next",
+      prevEl: ".swiper-btn-prev",
+    },
+  })
+  var swiper_big = new Swiper(".swiper-big", {
+    spaceBetween: 0,
+
+    thumbs: {
+      swiper: swiper_sm,
+    },
+  })
+  var case_ul = new Swiper(".case-ul", {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+  })
+</script>
+
+{% endblock %}

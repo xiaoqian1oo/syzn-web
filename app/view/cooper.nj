@@ -1,0 +1,38 @@
+{% extends "./layout/layout.nj" %}
+
+{% block title %}
+    <title>{{systemInfo.name}} - {{currentMenu.title}}</title>
+{% endblock %}
+
+{% block content %}
+{% include  "./layout/sec-img.nj" %}
+    <div id="navbar-box">
+        <div class="inbox cn">
+            {% for item in mostMenu.children %}
+                <a href="{{item.href}}?id={{item.id}}" class="{{ 'cur' if currentId==item.id }}">{{item.title}}</a>
+            {% endfor %}
+        </div>
+        <div class="inbox en">
+            {% for item in mostMenu.children %}
+                <a href="{{item.href}}?id={{item.id}}" class="{{ 'cur' if currentId==item.id }}">{{item.title_en}}</a>
+            {% endfor %}
+        </div>
+    </div>
+
+    <section class="section-box cooper-box">
+        <div class="container">
+
+        <div class="tle cn">我们为您提供的不只是服务，而是改变！</div>
+        <div class="tle en">What we offer you is not just service, but change!</div>
+        <ul class="cooper-list">
+            {% for item in list %}
+                <li >
+                <a class="pos" href="javascript:;"><img src="{{item.url}}" alt="1"></a>
+            </li>
+            {% endfor %}
+        </ul>
+
+        </div>
+    </section>
+
+{% endblock %}

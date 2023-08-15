@@ -1,0 +1,120 @@
+<link rel="stylesheet" href="/public/css/style.css">
+<header class="header-box {{ 'index-header' if (currentMenu.href=='/') else '' }}">
+    <div class="pc-header">
+        <a href="/" class="logo">
+            {% if currentMenu.href == '/' %}
+                <img src="{{systemInfo.logo}}" alt="" class="logo-img logo-home">
+            {% else %}
+                <img src="{{systemInfo.logo_mobile}}" alt="" class="logo-img logo-other">
+            {% endif %}
+        </a>
+        <ul class="menu-ul">
+            {% for item in menu %}
+                <li class="{{'on' if item.href==currentMenu.href}}">
+                    <a href="{{item.href}}">
+                        <span class="cn">{{item.title}}</span>
+                        <span class="en">{{item.title_en}}</span>
+                    </a>
+                    {% if item.children.length > 0 %}
+                        <dl class="sub-dl cn">
+                            {% for sub in item.children %}
+                                <dd>
+                                    <a href="{{sub.href}}?id={{sub.id}}">{{sub.title}}</a>
+                                </dd>
+                            {% endfor %}
+                        </dl>
+                         <dl class="sub-dl en">
+                            {% for sub in item.children %}
+                                <dd>
+                                    <a href="{{sub.href}}?id={{sub.id}}">{{sub.title_en}}</a>
+                                </dd>
+                            {% endfor %}
+                        </dl>
+                    {% endif %}
+                </li>
+            {% endfor %}
+            <li class="lang-menu my-lang">
+                <a href="javascript:;" lang="zh">中文版</a>
+                <a href="javascript:;" lang="en">English</a>
+            </li>
+        </ul>
+        <div class="header-version">
+            <div class="code-img">
+                <img src="{{systemInfo.wx_code}}" alt="">
+                <div class="preview-img">
+                    <img src="{{systemInfo.wx_code}}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mo-header">
+        <div class="mo-head">
+            <a class="logobox"><img src="{{systemInfo.logo_mobile}}"></a>
+            <div class="ico-menu btn-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="mo-mask btn-menu">
+            <img src="/public/image/close.png">
+        </div>
+        <ul class="mo-menu">
+
+            {% for item in menu %}
+                <li>
+                    <div class="subtitle bignav selected">
+                        <a href="{{item.href}}">{{item.title}}
+                        </a>
+                    </div>
+                    {# <div class="subbox">
+                    <a href="product_list1.html">Z系列（自动行走坡口机）</a>
+                    <a href="product_list2.html">X 系列（小板材坡口机）</a>
+                    <a href="product_list3.html">B 系列（便携式坡口机）</a>
+                    <a href="product_list4.html">Q系列（曲线坡口机）</a>
+                    <a href="product_list5.html">N系列（内涨式圆管坡口机）</a>
+                </div> #}
+                </li>
+            {% endfor %}
+            <li class="lang-menu my-lang">
+                <a href="javascript:;" lang="zh">中文版</a>
+                <a href="javascript:;" lang="en">English</a>
+            </li>
+            <li class="code-img">
+                <img src="{{systemInfo.wx_code}}" alt="">
+            </li>
+        </ul>
+    </div>
+</header>
+
+<script>
+    $(".btn-menu").click(function () {
+        $(".mo-header").toggleClass("open")
+    })
+
+    $(function () {
+        let lang = localStorage.getItem('lang')
+
+        if (lang === 'en') {
+            $(".en").css("dispaly", "block")
+            $(".cn").hide()
+        } else {
+            $(".cn").css("dispaly", "block")
+            $(".en").hide()
+        }
+
+        $('.my-lang a').click(function () {
+            var lang = $(this).attr('lang');
+            localStorage.setItem('lang', lang)
+            location.reload();
+            /** var lang = $(this).attr('lang');
+            $.get('/setLanguage', {
+                "lang": lang
+            }, function () {
+                window
+                    .location
+                    .reload();
+            }) **/
+        });
+    })
+</script>

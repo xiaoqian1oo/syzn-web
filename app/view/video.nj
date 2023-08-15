@@ -1,0 +1,94 @@
+{% extends "./layout/layout.nj" %}
+
+{# {% block title %}
+    <title>{{systemInfo.name}} - {{currentMenu.title}}</title>
+{% endblock %} #}
+
+{% block content %}
+ {% include  "./layout/sec-img.nj" %}
+
+    <section class="section-box">
+        
+        <div class="container">
+            <div class="conn-flex">
+                <div class="conn-left">
+<div class="conn-slide">
+    <div class="tle">
+        <h3 class="cn">{{currentMenu.title}}</h3>
+        <p class="en">{{currentMenu.title_en}}</p>
+    </div>
+    <ul class="conn-slide-menu">
+        {% for item in classify.children %}
+        <li class="{{'on' if item.id==currentId}}">
+            <div class="a-tle cn">
+                <i class="icon"></i>
+                <a href="/video?type={{item.id}}">
+                    {{item.title}}
+                </a>
+            </div>
+            <div class="a-tle en">
+                <i class="icon"></i>
+                <a href="/video?type={{item.id}}">
+                    {{item.title_en}}
+                </a>
+            </div>
+            {% if item.children?.length>0 %}
+                
+            {% endif %}
+            <dl>
+                {% for sub in item.children %}
+                   <dd class="">
+                    <a href="/video?type={{sub.id}}">
+                    {{sub.title}}
+                </a>
+                </dd> 
+                {% endfor %}
+            </dl>
+        </li>            
+        {% endfor %}
+    </ul>
+</div>
+<script>
+    $(".conn-slide-menu>li .a-tle .icon").click(function (e) {
+        let parentLi = $(this).parents("li")
+        let dl = parentLi.children("dl")
+        if (dl[0]) {
+            parentLi.toggleClass("on")
+        }
+    })
+</script>
+                </div>
+                <div class="conn-right">
+                    <div class="con-title cn">
+                        <span>视频展示</span>
+                        {# <i>News Information</i> #}
+                    </div>
+                    <div class="con-title en">
+                        <span>Video presentation</span>
+                        {# <i>News Information</i> #}
+                    </div>
+                    <div>
+                        <ul class="goods-list">
+                            {% for item in list %}
+                                <li class="lis">
+                                    <a href="/video-detail?id={{item.id}}">
+                                        <div class="pos video-img">
+                                            {# <video src="{{item.video_url}}"  controls="controls"></video> #}
+                                            <img src="{{item.video_image_url}}"/>
+                                        </div>
+
+                                        {# 产品视频->视频展示标题 #}
+                                        <div class="goods-tle cn">{{item.title}}</div>
+                                        <div class="goods-tle en">{{item.title_en}}</div>
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
